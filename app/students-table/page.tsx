@@ -27,6 +27,7 @@ import {
 import { Button } from "@/components/ui/button";
 import StudentDialog from "@/components/students-table/StudentDialog";
 import ConfirmDialog from "@/components/students-table/ConfirmDialog";
+import SkeletonCard from "@/components/students-table/TableSkeleton";
 
 const StudentsTable = () => {
   const [students, setStudents] = useState<Student[]>([]);
@@ -39,9 +40,7 @@ const StudentsTable = () => {
 
   useEffect(() => {
     const fetchStudents = async () => {
-      const { data, error } = await supabase
-        .from("students")
-        .select("*");
+      const { data, error } = await supabase.from("students").select("*");
       if (error) {
         console.error("Error fetching students:", error);
       } else {
@@ -134,7 +133,7 @@ const StudentsTable = () => {
       </CardHeader>
       <CardContent>
         {loading ? (
-          <p>Loading...</p>
+          <SkeletonCard />
         ) : (
           <>
             <Table>
