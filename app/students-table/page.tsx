@@ -116,7 +116,7 @@ const StudentsTable = () => {
   };
 
   return (
-    <Card className="bg-white w-full min-w-[850px] overflow-auto">
+    <Card className="bg-white w-full">
       <CardHeader>
         <div className="flex justify-between items-center">
           <div className="space-y-4">
